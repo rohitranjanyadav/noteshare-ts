@@ -1,0 +1,42 @@
+.DS_Store
+Thumbs.db
+
+# Node/Express backend
+backend/node_modules/
+backend/dist/
+backend/build/
+backend/coverage/
+backend/.env
+backend/.env.*
+backend/.npmrc
+backend/.pnp
+backend/.pnp.cjs
+backend/.cache/
+backend/*.log
+backend/npm-debug.log*
+backend/yarn-debug.log*
+backend/yarn-error.log*
+backend/pnpm-debug.log*
+backend/.tsbuildinfo
+backend/.eslintcache
+
+# Next.js frontend
+frontend/.next/
+frontend/out/
+frontend/node_modules/
+frontend/.env
+frontend/.env.*
+frontend/.next/cache/
+frontend/.vercel/
+frontend/.turbo/
+frontend/coverage/
+frontend/.eslintcache
+frontend/*.log
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/pnpm-debug.log*
+
+# IDE
+.vscode/
+.idea/
