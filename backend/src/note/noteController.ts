@@ -1,8 +1,9 @@
-import type { Request, Response } from "express";
+import type { NextFunction, Request, Response } from "express";
 import noteModel from "./noteModel.ts";
 import envConfig from "../config/config.ts";
+import createHttpError from "http-errors";
 
-const createNote = async (req: Request, res: Response) => {
+const createNote = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const file = req.file
       ? `${envConfig.backendUrl}/${req.file.filename}`
@@ -28,5 +29,8 @@ const createNote = async (req: Request, res: Response) => {
     });
   } catch (error) {
     console.log(error);
+    return next(createHttpError(500, "Error While Creating Note!!!"));
   }
 };
+
+export {createNote}
