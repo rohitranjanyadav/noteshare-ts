@@ -4,7 +4,11 @@ import noteRoute from "./note/noteRoute.ts";
 
 const app = express();
 
-app.use("/api/notes",noteRoute)
+app.use(express.json());
+
+app.use("/api/notes", noteRoute);
+app.use(express.static("./src/uploads/"))
+
 
 app.use(globalErrorHandler);
 

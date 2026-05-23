@@ -8,7 +8,11 @@ const createNote = async (req: Request, res: Response, next: NextFunction) => {
     const file = req.file
       ? `${envConfig.backendUrl}/${req.file.filename}`
       : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcScZSUkhxhCk0K91g3ibyExxsDmPpZ3vaSWHg&s";
-    const { title, subtitle, description } = req.body;
+    const { title, subtitle, description } = (req.body ?? {}) as {
+      title?: string;
+      subtitle?: string;
+      description?: string;
+    };
 
     if (!title || !subtitle || !description) {
       res.status(400).json({
@@ -33,4 +37,4 @@ const createNote = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export {createNote}
+export { createNote };
