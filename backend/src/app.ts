@@ -1,19 +1,21 @@
 import express from "express";
 import globalErrorHandler from "./middlewares/globalErrorHandler.ts";
 import noteRoute from "./note/noteRoute.ts";
-import cors from "cors"
+import cors from "cors";
+import envConfig from "./config/config.ts";
 
 const app = express();
 
 app.use(express.json());
 
-app.use(cors({
-  origin:
-}))
+app.use(
+  cors({
+    origin: envConfig.frontendUrl,
+  }),
+);
 
 app.use("/api/notes", noteRoute);
-app.use(express.static("./src/uploads/"))
-
+app.use(express.static("./src/uploads/"));
 
 app.use(globalErrorHandler);
 
