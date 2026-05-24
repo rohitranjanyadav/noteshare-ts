@@ -53,6 +53,10 @@ const listNote = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     const note = await noteModel.findById(id);
+
+    if (!note) {
+      return next(createHttpError(404, "Note Not Found!!!"));
+    }
     res.status(200).json({
       message: "Note Fetched!!!",
       data: note,
@@ -71,4 +75,4 @@ const deleteNote = async (req: Request, res: Response, next: NextFunction) => {
   }
 };
 
-export { createNote };
+export { createNote, listNotes, listNote, deleteNote };
