@@ -70,6 +70,9 @@ const deleteNote = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { id } = req.params;
     await noteModel.findByIdAndDelete(id);
+    return res.status(200).json({
+      message: "Note Deleted",
+    });
   } catch (error) {
     return next(createHttpError(500, "Error While Deleting!!!"));
   }
